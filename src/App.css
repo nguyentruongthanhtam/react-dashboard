@@ -1,28 +1,57 @@
 .App {
   text-align: center;
-}
+  background: url("./Image/wallpaper.jpg") center center fixed no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; }
+  .App .City_name {
+    position: absolute;
+    height: 150px;
+    padding: 20px;
+    color: #fff;
+    right: 0px;
+    top: 10px; }
+  .App .Dashboard {
+    height: 30%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; }
+    .App .Dashboard > * {
+      background-color: rgba(0, 0, 0, 0.7);
+      text-decoration: none;
+      display: flex;
+      width: 20%;
+      color: #fff;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: all .5s; }
+      .App .Dashboard > * > img {
+        width: 5em;
+        height: 5em; }
+      .App .Dashboard > * > span {
+        position: absolute;
+        bottom: 20px; }
+      .App .Dashboard > *:hover {
+        transition: all .5s;
+        transform: translate3d(0, -40px, 0); }
+    .App .Dashboard div {
+      width: 18%;
+      display: flex; }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+.icon-1:hover {
+  background-color: #232103; }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
+.icon-2:hover {
+  background-color: #1AA7CC; }
 
-.App-title {
-  font-size: 1.5em;
-}
+.icon-3:hover {
+  background-color: #F112AE; }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+.icon-4:hover {
+  background-color: #621DDB; }

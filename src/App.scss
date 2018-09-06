@@ -1,0 +1,69 @@
+$primary_color: #444;
+$text_color: #fff;
+$opacity: 0.5;
+$wallpaper : url("./Image/wallpaper.jpg");
+$dashboard_bg_color: #343434;
+.App {
+  text-align: center;
+  background: $wallpaper center center fixed no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  .City_name {
+    position: absolute;
+    height: 150px;
+    padding: 20px;
+    color: $text_color;
+    right: 0px;
+    top: 10px;
+
+  }
+
+  .Dashboard {
+    height: 30%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    & > * {
+      background-color: rgba(0, 0, 0, 0.7);
+      text-decoration: none;
+      display: flex;
+      width: 20%;
+      color: $text_color;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: all .5s;
+      & > img {
+        width: 5em;
+        height: 5em;
+      }
+      & > span {
+        position: absolute;
+        bottom: 20px;
+      }
+      &:hover {
+        transition: all .5s;
+        transform: translate3d(0, -40px, 0);
+      }
+    }
+    & div {
+      width: 18%;
+      display: flex;
+    }
+  }
+}
+
+@mixin color-for-icon($prefix, $color...){
+  @each $i in $color {
+    .#{$prefix}#{nth($i, 1)}:hover {
+      background-color: nth($i, 2);
+    }
+  }
+}
+@include color-for-icon('icon-', '1' #232103, '2' #1AA7CC, '3' #F112AE, '4' #621DDB );
