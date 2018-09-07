@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import Time from '../Components/Time'
 import Icon1 from '../Image/Icon1.png';
 import Icon2 from '../Image/Icon2.png';
 import Icon3 from '../Image/Icon3.png';
 import Icon4 from '../Image/Icon4.png';
 class Dashboard extends Component {
   render() {
+    let temp = this.props.temp
     return (
       <div className="Dashboard">
         <a href="#" className="icon-1">
-          <img src={Icon1}></img>
+          {/* <img src={Icon1}></img> */}
+          <h1>{temp}°C</h1>
           <span>Weather</span>
         </a>
         <a href="#" className="icon-2">
@@ -26,7 +29,7 @@ class Dashboard extends Component {
         
         <span>Notes</span>
         </a>
-        <div>Time</div>
+        <Time></Time>
       </div>
     );
   }
