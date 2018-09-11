@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Dashboard from './Pages/Dashboard'
-import Weather from './Components/Weather'
-import appId from './Appkey'
-import './App.css';
-
+import Weather from './Pages/Weather'
+import Map from './Pages/Map'
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
+import keys from './Appkey'
+import './App.css'
 class App extends Component {
   state = {
     currentWeather: null,
@@ -20,18 +21,23 @@ class App extends Component {
       temp = this.state.currentWeather.main.temp
     }
     return (
-      <div className="App">
-        <header className="City_name">
-          <h2>HELSINKI</h2>
-        </header>
-        <Weather weather={weather}/>
-        <Dashboard temp={temp}/>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <header className="City_name">
+            <h2>HELSINKI</h2>
+          </header>
+          <Switch>
+            <Route path="/weather" render={(props) => <Weather weather={weather} />}/>
+            <Route path="/map" render={(props) => <Map  />}></Route>
+          </Switch>
+          <Dashboard temp={temp}/>
+        </div>
+      </BrowserRouter>
     );
   }
   getWeatherData (city,unit){
     const queryUnit = unit==='°C' ? 'metric' : 'imperial';
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appId=${appId}&units=${queryUnit}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appId=${keys.weather}&units=${queryUnit}`)
     .then(res => res.json())
     .then(data => {
         this.setState({

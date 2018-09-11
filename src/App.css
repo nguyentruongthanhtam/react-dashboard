@@ -1,3 +1,13 @@
+.App .Map #options label, .App .Map #options input:checked + label, .App .Map .params div:hover {
+  transition: .5s all; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden; }
+
 .App {
   text-align: center;
   background: url("./Image/wallpaper.jpg") center center fixed no-repeat;
@@ -9,7 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative; }
   .App .City_name {
     position: absolute;
     height: 150px;
@@ -18,23 +29,90 @@
     top: 20px; }
   .App .Weather {
     display: flex;
-    height: 40%;
+    height: 80%;
     width: 50%;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
     color: #fff;
     font-size: 2em;
     letter-spacing: .3em; }
+  .App .Map {
+    position: relative;
+    width: 90%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch; }
+    .App .Map #findingContainer {
+      height: 90%;
+      width: 100%;
+      display: flex;
+      flex-direction: column; }
+    .App .Map #options {
+      font-size: 1.1em;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      flex-direction: row; }
+      .App .Map #options label {
+        opacity: .5; }
+      .App .Map #options input {
+        visibility: hidden; }
+      .App .Map #options input:checked + label {
+        color: #fff;
+        font-size: 1.3em;
+        margin-bottom: 5px;
+        opacity: 1; }
+    .App .Map .params {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0; }
+      .App .Map .params div {
+        color: #444;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 10px;
+        font-weight: 700;
+        cursor: pointer; }
+        .App .Map .params div:hover {
+          color: #fff;
+          background-color: transparent; }
+      .App .Map .params input {
+        height: 30px;
+        width: 300px;
+        margin: 0 30px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid #444;
+        color: #fff;
+        font-size: 1.2em; }
+        .App .Map .params input:hover {
+          border-bottom: 3px solid #fff;
+          transition: .5s all; }
+        .App .Map .params input:focus {
+          outline: none;
+          border-bottom: 3px solid #fff;
+          transition: .5s all; }
+        .App .Map .params input-webkit-::placeholder {
+          font-size: 1em; }
   .App .Dashboard {
-    height: 30%;
+    height: 15%;
     width: 100vw;
+    max-width: 2000px;
     display: flex;
     position: absolute;
     bottom: 0;
     justify-content: space-between;
     align-items: stretch; }
+    .App .Dashboard .Time > p {
+      margin: 0; }
     .App .Dashboard .Time p:first-child {
       margin: 0;
-      font-size: 4em;
+      font-size: 2em;
       font-weight: 800;
       letter-spacing: .1em; }
     .App .Dashboard .Time p:nth-of-type(2) {
@@ -53,13 +131,14 @@
       flex-direction: column;
       transition: all .5s; }
       .App .Dashboard > * h1 {
-        font-size: 4em; }
+        font-size: 3.5em;
+        font-weight: 600; }
       .App .Dashboard > * > img {
-        width: 5em;
-        height: 5em; }
+        width: 3em;
+        height: 3em; }
       .App .Dashboard > * > span {
         position: absolute;
-        bottom: 20px; }
+        bottom: 10px; }
       .App .Dashboard > *:before {
         content: '';
         display: block;
