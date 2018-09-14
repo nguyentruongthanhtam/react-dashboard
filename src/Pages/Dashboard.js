@@ -15,14 +15,14 @@ class Dashboard extends Component {
           <h1>{temp}°C</h1>
           <span>Weather</span>
         </Link>
-        <a href="#" className="icon-2">
+        <Link to="/news" className="icon-2">
           <img src={Icon2}></img>
-          <span>Twitter</span>
-        </a>
-        <a href="#" className="icon-3">
+          <span>News</span>
+        </Link>
+        <Link to="#" className="icon-3">
           <img src={Icon3}></img>
           <span>Reminder</span>
-        </a>
+        </Link>
         <Link to="/map" className="icon-4">
           <img src={Icon4}></img>
           <span>Map</span>

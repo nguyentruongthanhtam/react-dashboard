@@ -6,7 +6,7 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  overflow: hidden; }
+  overflow-x: hidden; }
 
 .App {
   text-align: center;
@@ -18,31 +18,74 @@ html, body {
   flex-direction: column;
   display: flex;
   justify-content: center;
+  justify-items: stretch;
   align-items: center;
+  color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: relative; }
   .App .City_name {
     position: absolute;
-    height: 150px;
     color: #fff;
     right: 20px;
     top: 20px; }
   .App .Weather {
     display: flex;
+    justify-self: stretch;
     height: 80%;
     width: 50%;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     color: #fff;
     font-size: 2em;
     letter-spacing: .3em; }
+  .App .News {
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    left: 0;
+    overflow-wrap: none; }
+    .App .News::-webkit-scrollbar {
+      display: none; }
+    .App .News .News_Sources {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      width: 100%;
+      height: 10%;
+      justify-content: space-around;
+      cursor: pointer; }
+    .App .News .article {
+      text-transform: none;
+      color: #fff;
+      margin: 0 auto;
+      width: 50%;
+      height: 20%;
+      padding: 2.5em 0;
+      font-size: .8em;
+      position: relative; }
+      .App .News .article div:first-child {
+        width: 40%;
+        height: 100%;
+        margin: 0 10px; }
+      .App .News .article div:nth-child(2) {
+        padding: 10px 20px;
+        text-align: left;
+        width: auto;
+        position: absolute;
+        left: 35%;
+        bottom: -10px;
+        background-color: rgba(26, 168, 204, 0.85); }
   .App .Map {
     position: relative;
     width: 90%;
-    height: 85%;
+    height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: stretch; }
+    justify-content: center; }
     .App .Map #findingContainer {
       height: 90%;
       width: 100%;
@@ -50,11 +93,8 @@ html, body {
       flex-direction: column; }
     .App .Map #options {
       font-size: 1.1em;
-      position: absolute;
-      left: 0;
-      top: 0;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       flex-direction: row; }
       .App .Map #options label {
         opacity: .5; }
@@ -100,12 +140,11 @@ html, body {
         .App .Map .params input-webkit-::placeholder {
           font-size: 1em; }
   .App .Dashboard {
-    height: 15%;
+    height: 20%;
     width: 100vw;
     max-width: 2000px;
     display: flex;
-    position: absolute;
-    bottom: 0;
+    position: relative;
     justify-content: space-between;
     align-items: stretch; }
     .App .Dashboard .Time > p {

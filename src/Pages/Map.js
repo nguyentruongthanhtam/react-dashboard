@@ -66,11 +66,11 @@ class Map extends Component {
     return (
       <div className="Map">
         <div id="options">
-            <div onClick={ e =>this._handleOptions(e) }>
+            <div onTouchStart={e =>this._handleOptions(e)} onClick={ e =>this._handleOptions(e) }>
               <input type="radio" name="type" id="find" value="1" defaultChecked/>
               <label htmlFor="find">Find</label>
             </div>
-            <div onClick={ e =>this._handleOptions(e) }>
+            <div onTouchStart={e =>this._handleOptions(e)} onClick={ e =>this._handleOptions(e) }>
               <input type="radio" name="type" id="direction" value="2" />
               <label htmlFor="direction">Direction</label>
             </div>

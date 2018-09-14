@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dashboard from './Pages/Dashboard'
 import Weather from './Pages/Weather'
 import Map from './Pages/Map'
+import News from './Pages/News'
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import keys from './Appkey'
 import './App.css'
@@ -11,7 +12,7 @@ class App extends Component {
     city: 'Helsinki'
   }
   componentDidMount(){
-    this.setState({currentWeather: this.getWeatherData(this.state.city,'°C')})
+    // this.setState({currentWeather: this.getWeatherData(this.state.city,'°C')})
   }
   render() {
     let weather = '',temp = ''
@@ -29,6 +30,7 @@ class App extends Component {
           <Switch>
             <Route path="/weather" render={(props) => <Weather weather={weather} />}/>
             <Route path="/map" render={(props) => <Map  />}></Route>
+            <Route path="/news" render={(props) => <News  />}></Route>
           </Switch>
           <Dashboard temp={temp}/>
         </div>
@@ -43,7 +45,6 @@ class App extends Component {
         this.setState({
             currentWeather: data
         })
-        console.log(data);
     }).catch(error=>{
         this.setState({city: 'Error or incorrect city'})
     })     
