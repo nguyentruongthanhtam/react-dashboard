@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Dashboard from './Pages/Dashboard'
 import Weather from './Pages/Weather'
 import Map from './Pages/Map'
+import Reminder from './Pages/Reminder'
 import News from './Pages/News'
+
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import keys from './Appkey'
 import './App.css'
@@ -12,7 +14,7 @@ class App extends Component {
     city: 'Helsinki'
   }
   componentDidMount(){
-    // this.setState({currentWeather: this.getWeatherData(this.state.city,'°C')})
+    this.setState({currentWeather: this.getWeatherData(this.state.city,'°C')})
   }
   render() {
     let weather = '',temp = ''
@@ -27,12 +29,14 @@ class App extends Component {
           <header className="City_name">
             <h2>HELSINKI</h2>
           </header>
-          <Switch>
-            <Route path="/weather" render={(props) => <Weather weather={weather} />}/>
-            <Route path="/map" render={(props) => <Map  />}></Route>
-            <Route path="/news" render={(props) => <News  />}></Route>
-          </Switch>
+            <Switch>
+              <Route path="/weather" render={(props) => <Weather weather={weather} temp={temp}/>}/>
+              <Route path="/news" render={(props) => <News  />}></Route>
+              <Route path="/reminder" render={(props) => <Reminder  />}></Route>
+              <Route path="/map" render={(props) => <Map  />}></Route>
+            </Switch>
           <Dashboard temp={temp}/>
+          {/* <Keyboard></Keyboard> */}
         </div>
       </BrowserRouter>
     );

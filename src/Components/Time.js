@@ -6,7 +6,7 @@ class Time extends Component {
   }
   componentDidMount(){
     setInterval(()=>{
-      this.setState({time: moment().format("dddd, MMM Do YYYY,h:mm:ss a") })
+      this.setState({time: moment().format("dddd, D MMMM YYYY,HH:mm") })
     },1000)
   }
   render() {
@@ -15,8 +15,8 @@ class Time extends Component {
     let time = this.state.time.split(',')[2];
       return (
         <div className="Time">
-          <p>{day}</p>
           <p>{time}</p>
+          <p>{day}</p>
           <p>{date}</p>
         </div>
       );    

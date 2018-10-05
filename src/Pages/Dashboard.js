@@ -19,7 +19,8 @@ class Dashboard extends Component {
           <img src={Icon2}></img>
           <span>News</span>
         </Link>
-        <Link to="#" className="icon-3">
+        <Time></Time>
+        <Link to="/reminder" className="icon-3">
           <img src={Icon3}></img>
           <span>Reminder</span>
         </Link>
@@ -27,7 +28,6 @@ class Dashboard extends Component {
           <img src={Icon4}></img>
           <span>Map</span>
         </Link>
-        <Time></Time>
       </div>
     );
   }

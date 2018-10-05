@@ -1,28 +1,26 @@
 import React from 'react';
 import keys from '../Appkey'
 const apiURL = 'https://newsapi.org/v2/'
+const sourcesURL = [
+  { name: 'Technology',url: 'top-headlines?category=technology&country=us&'},
+  { name: 'BBC', url: 'top-headlines?sources=bbc-news&'},
+  { name: 'US',url: 'top-headlines?country=us&'},
+  { name: 'SPORT',url: 'top-headlines?category=sport&country=gb&'},
+]
+
 export default class News extends React.Component{
   state = {
     news : null,
-    error: 'Select Source of NEWS'
+    error: 'Select Source of NEWS',
+    activeTab: '0'
   }
   componentDidMount(){
-    // var url = apiURL + 'top-headlines?' +
-    //       'sources=bbc-news&' +
-    //       'apiKey=' + keys.news;
-    // var req = new Request(url);
-    // fetch(req)
-    //     .then(res => res.json())
-    //     .then(data=>{
-    //       console.log(data.articles)
-    //       this.setState({news: data.articles})
-    //     })
-    // .catch(
-    //   (error) => {
-    //     console.log('error',error)
-    //   })
+    this.initial()
   }
-  setSource = (source) => {
+  initial = () => {
+    this.setSource(sourcesURL[0].url,this.state.activeTab)
+  }
+  setSource = (source,index) => {
     let url = apiURL + source + 'apiKey=' + keys.news
     var req = new Request(url);
     console.log(url)
@@ -32,14 +30,14 @@ export default class News extends React.Component{
           let result;
           if(data.status === "ok")
           {
-            result = data.article
-            this.setState({news: result})
+            result = data.articles
+            this.setState({news: result,activeTab: index})
           }
           else if(data.status === "error")
           {
             result = data.message
             console.log('error: ' + result)
-            this.setState({error: result})
+            this.setState({error: result,activeTab: index})
           }
         })
     .catch(
@@ -49,24 +47,23 @@ export default class News extends React.Component{
   }
   newsSources(){
     return (
-      <ul className="News_Sources">
-        <li onClick={e => this.setSource('top-headlines?sources=bbc-news&')}>BBC</li>
-        <li onClick={e => this.setSource('top-headlines?category=technology&')}>Tech</li>
-        <li onClick={e => this.setSource('top-headlines?country=us&')}>Finland</li>
+      <ul className="News-Sources">
+      {
+        sourcesURL.map((s,index) => <li key={index} className={(index==this.state.activeTab)?'isActive':''} onClick={e => this.setSource(s.url,index)}>{s.name}</li>)
+      }
       </ul>
     )
   }
-  article(article){
+  article(article,index){
     return(
-     <div key={article.publisedhAt} className="article">
+     <div key={index} className="article">
         <div>
-          <a href={article.url}><img src={article.urlToImage} alt={article.content} style={{height: '100%',width: '100%'}}></img></a>
+          <a href={article.url}><img src={article.urlToImage?article.urlToImage : 'https://via.placeholder.com/350x150'} alt={article.content} height='250' ></img></a>
         </div>
-        <div>
-          <h4>{article.title}</h4>
-          {/* <p>{article.content}</p> */}
+        <div >
+          <h1>{article.title}</h1>
           <p>{article.description}</p>
-          <span>{article.source.name}</span>
+          <span style={{fontStyle: 'italic'}}>{article.source.name}</span>
           <span></span>
         </div>
      </div> 
@@ -74,9 +71,11 @@ export default class News extends React.Component{
   }
   render(){
     return (
-      <div className="News">
+      <div className="News Content-Wrapper">
         {this.newsSources()}
-        {this.state.news?this.state.news.map(a=>this.article(a)) : <span>{this.state.error}</span>}
+        <div className="Articles-Wrapper">
+          {this.state.news?this.state.news.map((a,index)=>this.article(a,index)) : <span>{this.state.error}</span>}
+        </div>
       </div>
     )
   }

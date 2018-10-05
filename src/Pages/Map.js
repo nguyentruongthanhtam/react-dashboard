@@ -64,16 +64,12 @@ class Map extends Component {
     let mode = this.state.mode
 
     return (
-      <div className="Map">
+      <div className="Map Content-Wrapper">
         <div id="options">
-            <div onTouchStart={e =>this._handleOptions(e)} onClick={ e =>this._handleOptions(e) }>
-              <input type="radio" name="type" id="find" value="1" defaultChecked/>
-              <label htmlFor="find">Find</label>
-            </div>
-            <div onTouchStart={e =>this._handleOptions(e)} onClick={ e =>this._handleOptions(e) }>
-              <input type="radio" name="type" id="direction" value="2" />
-              <label htmlFor="direction">Direction</label>
-            </div>
+          <input type="radio" name="type" id="find" value="1" defaultChecked/>
+          <label onTouchStart={e =>this._handleOptions(e)} onClick={ e =>this._handleOptions(e) } htmlFor="find">Find</label>
+          <input type="radio" name="type" id="direction" value="2" />
+          <label onTouchStart={e =>this._handleOptions(e)} onClick={ e =>this._handleOptions(e) } htmlFor="direction">Direction</label>
         </div>
         {mode === '1' ? this.renderFindingMode() : this.renderDirectionMode()}
       </div>
