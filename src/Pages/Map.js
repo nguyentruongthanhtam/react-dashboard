@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import keys from '../Appkey'
-import {GoogleMap, Marker, withGoogleMap } from 'react-google-maps'
+// import {GoogleMap, Marker, withGoogleMap } from 'react-google-maps'
 class Map extends Component {
   constructor(props){
     super(props)
@@ -9,7 +9,7 @@ class Map extends Component {
   state = {
    mode: '1',
    direction: false,
-   place : 'Kauppakartanonkuja+3C'
+   place : 'Kamppi'
   }
   componentWillMount(){
     this.setState({findingSRC: this.state.findingSRC+ '&key=' + keys.gMap})

@@ -30,6 +30,7 @@ class App extends Component {
             <h2>HELSINKI</h2>
           </header>
             <Switch>
+              {/* <Route path="/" render={(props) => <Weather weather={weather} temp={temp}/>}/> */}
               <Route path="/weather" render={(props) => <Weather weather={weather} temp={temp}/>}/>
               <Route path="/news" render={(props) => <News  />}></Route>
               <Route path="/reminder" render={(props) => <Reminder  />}></Route>

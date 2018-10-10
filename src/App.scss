@@ -1,6 +1,6 @@
 $primary_color: #444;
 $text_color: #fff;
-$button_color: rgba(255,255,255,.5);
+$button_color: rgba(255,255,255,.9);
 $panel_color: rgba(34,34,34,.5);
 $opacity: 0.5;
 $wallpaper : url("./Image/wallpaper.jpg");
@@ -117,7 +117,7 @@ html,body {
     }
     .Articles-Wrapper {
       height: 92%;
-      width: 100%;
+      width: 90%;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -129,35 +129,35 @@ html,body {
       .article {
         text-transform: none;
         color: $text_color;
-        margin: 30px auto;
-        width: 40%;
-        height: 30%;
+        margin: 20px auto;
+        width: 45%;
+        height: 25%;
         font-size: .8em;
-        position: relative;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: 3px 3px 10px #444, -3px -3px 10px #444;
         a{
-          position: absolute;
-          left: 10px;
-          top: 10px;
-          width: 40%;
-          height: 90%;
-          img{
-            box-shadow: 3px 3px 10px #444, -3px -3px 10px #444;
-          }
+          display: inline-block;
+          background-size: 300px auto;
+          background-color: black;
+          background-repeat: no-repeat;
+          width: 300px;
+          height: 100%;
         }
         & div:nth-child(2){
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
           text-align: left;
-          width: 70%;
-          height: 90%;
-          position: absolute;
-          overflow: hidden;
-          left: 35%;
-          padding: 20px;
-          background-color: rgba(26, 168, 204, 0.5);
+          flex: 1;
+          height: 100%;
+          overflow-y: scroll;
+          &::-webkit-scrollbar{
+            display: none;
+          }
+          background-color: rgba(26, 168, 204, 0.4);
           p {
-            color: darken($text_color,10);
+            color: darken($text_color,15);
             font-size: 1.4em;
             padding: 10px 0;
           }
@@ -235,14 +235,20 @@ html,body {
     button{
       @extend %button;
       background-color: $button_color;
+      color: #343434;
       border: none;
+      &:hover{
+        @extend %transition_default;
+        color: $text_color;
+        background-color: #444;
+      }
     }
   }
   .Map {
-    justify-content: space-between;
+    justify-content: space-around;
     #findingContainer {
-      height: 90%;
-      width: 100%;
+      height: 80%;
+      width: 80%;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -319,7 +325,6 @@ html,body {
     }
   }
   .Dashboard {
-    height: 10%;
     width: 100vw;
     max-width: 1500px;
     display: flex;
@@ -328,6 +333,7 @@ html,body {
     align-items: stretch;
     & > * {
       background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
       text-decoration: none;
       display: flex;
       width: 20%;
@@ -345,7 +351,6 @@ html,body {
         height: 2em;
       }
       & > span {
-        position: absolute;
         font-size: 1.1em;
         letter-spacing: 0.1em;
         bottom: 15px;
@@ -360,14 +365,6 @@ html,body {
         background-color: #fff;
       }
     }
-    & a:hover {
-      transition: all .3s;
-      // transform: translate3d(0, -20px, 0);
-      &::before {
-        transition: all .3s;
-        width: 5%;
-      }
-    }
     & div {
       width: 18%;
       display: flex;
@@ -377,8 +374,13 @@ html,body {
 
 @mixin color-for-icon($prefix, $color...){
   @each $i in $color {
-    .#{$prefix}#{nth($i, 1)}:hover {
+    .#{$prefix}#{nth($i, 1)}:hover, .#{$prefix}#{nth($i, 1)}.isActive {
       background-color: nth($i, 2);
+      transition: all .3s;
+      &::before {
+        transition: all .4s;
+        width: 5%;
+      }
     }
   }
 }
