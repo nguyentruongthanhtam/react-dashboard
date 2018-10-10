@@ -8,8 +8,13 @@
 
 # production
 /build
+<<<<<<< HEAD
 /.firebase
 /.firebaserc
+=======
+/public 
+/.firebase
+>>>>>>> 6c547c79c7380c4a1c857017fce887f535d21768
 # misc
 .DS_Store
 .env.local
